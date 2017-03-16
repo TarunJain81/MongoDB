@@ -1,0 +1,36 @@
+
+
+wmic os get caption
+wmic os get osarchitecture
+
+The 64-bit versions of MongoDB do not work with 32-bit Windows.
+
+
+https://www.mongodb.com/download-center?jmp=nav#community
+
+C:\Program Files\MongoDB\Server\3.2\
+
+"C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe" --dbpath d:\test\mongodb\data
+
+"C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe" --dbpath "d:\test\mongo db data"
+
+"C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe"
+
+
+The waiting for connections message in the console output indicates that the mongod.exe process is running successfully.
+
+to stop MongoDB, press Control+C in the terminal where the mongod instance is running.
+
+"C:\Program Files\MongoDB\Server\3.4\bin\mongo.exe
+
+mkdir c:\data\db
+mkdir c:\data\log
+
+
+ C:\Program Files\MongoDB\Server\3.4\mongod.cfg 
+
+"C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe" --config "C:\Program Files\MongoDB\Server\3.4\mongod.cfg" --install
+
+net start MongoDB
+
+net stop MongoDB
