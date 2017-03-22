@@ -1,0 +1,75 @@
+/*Below is the command to check if you system is 64 bit or 32 bit as MongoDB 64 bit doesn't run on 32 bit so make sure before you start installation*/
+
+//Run in command prompt
+
+wmic os get caption
+wmic os get osarchitecture
+
+/*Download msi file by below URL, Make sure you choose required OS. This is community version*/
+
+https://www.mongodb.com/download-center?jmp=nav#community
+
+/*Installaton is simple just run .msi file Below is the default location where MongoD will be installed, you can choose any location*/
+
+C:\Program Files\MongoDB\Server\3.2\
+
+/*Every database require data directory to store all data files.So choose required directory by executing below command in command prompt */
+
+"C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe" --dbpath d:\test\mongodb\data
+
+/*Most database have client and server architecture. Server runs in background listening to client request*/
+
+/* Run below in cmd prompt to start MongoDB server process*/
+
+"C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe"
+
+/*The waiting for connections message in the console output indicates that the mongod.exe process is running successfully.*/
+
+/*to stop MongoDB server process, press Control+C in the terminal where the mongod instance is running.*/
+
+/* To start client process run below cmd from different cmd prompt*/
+
+C:\Program Files\MongoDB\Server\3.4\bin\mongo.exe
+
+/*Open an Administrator command prompt.
+
+1.Press the Win key, type cmd.exe, and press Ctrl + Shift + Enter to run the Command Prompt as Administrator
+2. Or Press the Win key,type cmd.exe, right click and click "Run as administrator */
+
+/*Create directories for your database and log files:*/
+
+mkdir c:\data\db
+mkdir c:\data\log
+
+/* Optionally you can create configuration file. This file must set systemLog.path.
+
+For example, create a file at C:\Program Files\MongoDB\Server\3.4\mongod.cfg that specifies both systemLog.path and storage.dbPath as shown below so server will automatically pick below configuration file when it starts*/
+
+systemLog:
+    destination: file
+    path: c:\data\log\mongod.log
+storage:
+    dbPath: c:\data\db
+
+ 
+/*Install the MongoDB service by starting mongod.exe with the --install option and the -config option to specify the previously created configuration file.*/
+
+"C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe" --config "C:\Program Files\MongoDB\Server\3.4\mongod.cfg" --install
+
+/*Start the MongoDB service and Stop the MongoDB service by below command*/
+
+net start MongoDB
+
+net stop MongoDB
+
+
+/*You can set up the MongoDB server as a Windows Service that starts automatically at boot time instead to start manually each time by running above command by below coomand */
+
+sc.exe create MongoDB binPath= "\"C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe\" --service --config=\"C:\Program Files\MongoDB\Server\3.4\mongod.cfg\"" DisplayName= "MongoDB" start= "auto"
+
+
+/*You should recieve message "CreateService SUCCESS" and To remove the MongoDB service run "sc.exe delete MongoDB"*/
+
+Hope installation was successful if not you can reach me out by mail.
+
+CRUD operations will be next step and I will upload instriction and examples soon.
